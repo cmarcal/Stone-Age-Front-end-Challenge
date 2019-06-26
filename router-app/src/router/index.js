@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import ContainerSearch from '@/components/searchName/ContainerSearch'
+import ContainerHeros from '@/components/Heros/ContainerHeros'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'ContainerHeros',
+      component: ContainerHeros
+    },
+    {
+      path: '/search',
+      name: 'ContainerSearch',
+      component: ContainerSearch
     }
   ]
 })

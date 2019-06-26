@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <div class="container">
+      <h1>Bem vindos a listagem de todos os herois</h1>
+    </div>
     <router-view/>
   </div>
 </template>
@@ -12,12 +14,20 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.container {
+  background-color: #2a3542;
+  padding: 40px 20px;
+  color: #fff;
+  margin-bottom: 20px;
 }
 </style>
