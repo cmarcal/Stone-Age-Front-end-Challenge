@@ -1,13 +1,13 @@
 <template>
   <div class="containerBox">
-    <div v-for="n in 7" :key="n" class="box">
+    <div v-for="(h, index) in heros.results" :key="index" class="box">
       <div class="card">
-        <a href="javascript:void(0)" @click="heroClick(heros.id)" :alt="'ver mais detalhes do ' + heros.name">
+        <a href="javascript:void(0)" @click="heroClick(h)" :alt="'ver mais detalhes do ' + h.name">
           <i class="fas fa-star fa-lg" title="heroi favoritado"></i>
           <div class="boxInformation">
-            <h2>{{heros.name}}</h2>
+            <h2>{{h.name}}</h2>
           </div>
-          <img :src="heros.image.url" :title="heros.image.name" :alt="heros.image.name">
+          <img :src="h.image.url" :title="h.image.name" :alt="h.image.name">
         </a>
       </div>
     </div>
@@ -20,8 +20,8 @@ export default {
   name: 'CardHero',
   props: ['heros'],
   methods: {
-    heroClick (id) {
-      this.$emit('heroClick', id)
+    heroClick (obj) {
+      this.$emit('heroClick', obj)
     }
   }
 }
@@ -42,6 +42,7 @@ export default {
     .card {
       position: relative;
       width: 100%;
+      height: 90%;
 
       a {
         position: relative;
@@ -68,7 +69,7 @@ export default {
 
         .boxInformation {
           position: absolute;
-          bottom: 4px;
+          bottom: 0;
           left: 0;
           width: 98.5%;
           z-index: 10;
@@ -87,7 +88,7 @@ export default {
 
   @media screen and (max-width: 440px){
     .box{
-      width: 100%;
+      width: 45%;
     }
   }
 }

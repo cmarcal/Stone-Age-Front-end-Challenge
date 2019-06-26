@@ -1,7 +1,7 @@
 <template>
   <div>
     <CardHero v-if="!isLoading" :heros="heros" @heroClick="onHeroClick"/>
-    <ModalHero v-if="isModalShowing" :idHero="idHero" :dataHero="heros" @closeModal="onCloseModal"/>
+    <ModalHero v-if="isModalShowing" :idHero="idHero" :dataHero="dataHero" @closeModal="onCloseModal"/>
   </div>
 </template>
 
@@ -18,20 +18,23 @@ export default {
       heros: null,
       isModalShowing: false,
       isLoading: true,
-      idHero: 620
+      idHero: null,
+      dataHero: []
     }
   },
   methods: {
-    onHeroClick (id) {
+    onHeroClick (obj) {
       this.isModalShowing = true;
-      this.idHero = id
+      //this.heros.find(id => id === heros.id)
+      this.idHero = obj.id
+      this.dataHero = obj
     },
     onCloseModal () {
       this.isModalShowing = false;
     }
   },
   created () {
-    HTTP.get(process.env.TOOKEN + '/620')
+    HTTP.get(process.env.TOOKEN + '/search/spider/')
       .then(response => {
         this.isLoading = false;
         this.heros = response.data
