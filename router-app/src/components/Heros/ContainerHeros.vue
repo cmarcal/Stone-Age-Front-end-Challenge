@@ -1,6 +1,7 @@
 <template>
   <div>
-    <CardHero :heros="heros"/>
+    <CardHero :heros="heros" @heroClick="onHeroClick"/>
+    <ModalHero v-if="isModalShowing" :idHero="idHero"/>
   </div>
 </template>
 
@@ -13,7 +14,15 @@ export default {
   components: {CardHero},
   data () {
     return {
-      heros: null
+      heros: null,
+      isModalShowing: false,
+      idHero: null
+    }
+  },
+  methods: {
+    onHeroClick (id) {
+      this.isModalShowing = true;
+      this.idHero = id
     }
   },
   created () {

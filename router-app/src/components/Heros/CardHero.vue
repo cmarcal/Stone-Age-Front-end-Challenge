@@ -1,11 +1,15 @@
 <template>
   <div class="containerBox">
-    <div v-for="n in 5" :key="n" class="box">
-      <a href="#" :alt="'ver mais detalhes do ' + heros.name">
-        <img :src="heros.image.url" :title="heros.image.name" :alt="heros.image.name">
-        <h2>{{heros.name}}</h2>
-      </a>
-      <i class="far fa-star"></i>
+    <div v-for="n in 7" :key="n" class="box">
+      <div class="card">
+        <a href="#" :alt="'ver mais detalhes do ' + heros.name">
+          <i class="fas fa-star fa-lg" title="heroi favoritado"></i>
+          <div class="boxInformation">
+            <h2>{{heros.name}}</h2>
+          </div>
+          <img :src="heros.image.url" :title="heros.image.name" :alt="heros.image.name">
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -15,11 +19,11 @@
 export default {
   name: 'CardHero',
   props: ['heros'],
-  data () {
-    return {
-
+  methods: {
+    heroClick (id) {
+      this.$emit('heroClick', id)
     }
-  }  
+  }
 }
 </script>
 
@@ -29,38 +33,57 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 
-  .box{
-    border: 1px solid #dedede;
-    padding: 5px;
+  .box {
     margin: 5px;
-    display: flex;
-    align-items: center;
-    width: 22.8%;
+    width: 15%;
 
-    a {
-      display: flex;
-      color: #333;
-      text-decoration: none;
+    .card {
+      position: relative;
       width: 100%;
 
-      img{
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        margin-right: 20px;
+      a {
+        position: relative;
+        display: block;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        
+        .fa-star {
+          color: #FFB90F;
+          position: absolute;
+          right: 5px;
+          top: 10px;
+        }
+
+        img{
+          width: 100%;
+          height: 100%;
+          position: relative;
+          z-index: -1;
+        }
+
+        .boxInformation {
+          position: absolute;
+          bottom: 4px;
+          left: 0;
+          width: 98.5%;
+          z-index: 10;
+          padding: 12px 1.6px 8px 1.6px;
+          background-color: #3a3a3acc;
+          color: #fff;
+          text-align: center;
+
+          h2{
+            font-size: 13px;
+          }
+        }
       }
-
-      h2{
-        font-size: 13px;
-      }
-
-    }
-
-    .far {
-      color: #FFB90F
-    }
-  }
+   }
+}
 
   @media screen and (max-width: 440px){
     .box{
