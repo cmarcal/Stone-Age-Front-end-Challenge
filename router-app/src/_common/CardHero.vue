@@ -2,7 +2,7 @@
   <div class="containerBox">
     <div v-for="n in 7" :key="n" class="box">
       <div class="card">
-        <a href="#" :alt="'ver mais detalhes do ' + heros.name">
+        <a href="javascript:void(0)" @click="heroClick(heros.id)" :alt="'ver mais detalhes do ' + heros.name">
           <i class="fas fa-star fa-lg" title="heroi favoritado"></i>
           <div class="boxInformation">
             <h2>{{heros.name}}</h2>
