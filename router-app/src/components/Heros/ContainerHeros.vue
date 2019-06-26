@@ -1,14 +1,16 @@
 <template>
   <div>
-    {{heros}}
+    <CardHero :heros="heros"/>
   </div>
 </template>
 
 <script>
 import {HTTP} from '@/Api/api'
+import CardHero from './CardHero'
 
 export default {
   name: 'ContainerHeros',
+  components: {CardHero},
   data () {
     return {
       heros: null
