@@ -4,12 +4,10 @@
       <i @click="closeModal" class="fas fa-times fa-lg"></i>
       <div class="body">
         <img :src="dataHero.image.url" :title="dataHero.image.name" :alt="dataHero.image.name">
-       
         <div class="nameHero">
           <h2>{{dataHero.name}}</h2>
           <i @click="handlerFavorite(idHero)" :class="arrayFavorite.includes(idHero) ? 'fas fa-star fa-lg' : 'far fa-star fa-lg'" :title="arrayFavorite.includes(idHero) ? 'hero favorite' : 'clicked for favorite this hero'"></i>
         </div>
-        
         <div class="tools">
           <ul class="rowTools">
             <li v-for="(tab, index) in tabs" :key="index" @click="setActive(index, tab.name)"  :class="[{'active': activeTab === index}, tab.class]" class="formatedButton">
@@ -104,7 +102,7 @@ export default {
         overflow: hidden;
         border-radius: 50%;
       }
-      .nameHero { 
+      .nameHero {
         display: flex;
         align-items: center;
         justify-content: center;

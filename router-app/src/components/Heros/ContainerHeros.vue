@@ -1,7 +1,7 @@
 <template>
   <div>
     <CardHero v-if="!isLoading" :arrayFavorite="arrayFavorite" :heros="heros" @heroClick="onHeroClick"/>
-    <ModalHero v-if="isModalShowing" :arrayFavorite="arrayFavorite"  :favorite="favorite" :idHero="idHero" :dataHero="dataHero" @closeModal="onCloseModal" @handlerFavorite="onHandlerFavorite"/>
+    <ModalHero v-if="isModalShowing" :arrayFavorite="arrayFavorite" :idHero="idHero" :dataHero="dataHero" @closeModal="onCloseModal" @handlerFavorite="onHandlerFavorite"/>
   </div>
 </template>
 
@@ -35,14 +35,14 @@ export default {
     onCloseModal () {
       this.isModalShowing = false
     },
-    onHandlerFavorite(id) {
+    onHandlerFavorite (id) {
       // verify if hero exist in array
       // if exist, remove from array
       // else add in array
       if (this.arrayFavorite.includes(id)) {
         let index = this.arrayFavorite.indexOf(id)
         this.arrayFavorite.splice(index, 1)
-      } else { 
+      } else {
         this.arrayFavorite.push(id)
       }
 
@@ -50,14 +50,13 @@ export default {
     }
   },
   created () {
-    //get all id setting in coockie and add in variable local
+    // get all id setting in coockie and add in variable local
     if (this.arrayFavorite.length === 0) {
       let ac = JSON.parse(VueCookies.get('favoriteHero'))
       for (var i = 0; i < ac.length; i++) {
         this.arrayFavorite.push(ac[i])
       }
     }
-    
     HTTP.get(process.env.TOOKEN + '/search/spider/')
       .then(response => {
         this.isLoading = false
