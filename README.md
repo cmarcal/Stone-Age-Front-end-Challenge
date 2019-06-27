@@ -2,6 +2,22 @@
 
 ## Build Setup
 
+## Tools
+
+``` bash
+# framework from front-end develop
+- Vue.Js 2.6
+
+# Layout
+- Flexbox
+- Bootstrap Vue for progress bar
+- Scss for style
+
+# Connection with api
+- Axios 0.19
+
+```
+
 ``` bash
 # first enter the folder router-app
 cd router-app
