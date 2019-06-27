@@ -1,7 +1,8 @@
 <template>
-  <div id="app">
-    <div class="containerHeader">
+  <div id="app" :class="theme">
+    <div class="containerHeader" >
       <nav class="containerLink">
+        <button @click="triggy">Toggle Themes</button>
         <router-link :to="{ name: 'ContainerHeros'}">SuperHeros</router-link>
         <router-link :to="{ name: 'ContainerSearch'}">Find by Name</router-link>
       </nav>
@@ -15,25 +16,62 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      theme: 'dark'
+    }
+  },
+  methods: {
+    triggy () {
+      switch (this.theme) {
+        case 'light':
+          this.theme = 'dark'
+          break
+        case 'dark':
+          this.theme = 'light'
+          break
+        default:
+      }
+    }
+  }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
 body {
   margin: 0;
+  font-family: avenir;
+  -webkit-font-smoothing: antialiased;
 }
+button { background: dodgerblue; color: white; padding: .5rem 2rem; border: 0; cursor: pointer; }
+.light {
+  background: #eee;
+  color: #2a3542;
+   a { 
+    color: #2a3542;
+  }
+  
+}
+.dark {
+  background: #2a3542;
+  color: white;
+  a { 
+    color: white;
+    
+  }
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  height: 100vh;
 }
 .containerHeader {
-  background-color: #2a3542;
   padding: 40px 20px;
-  color: #fff;
   margin-bottom: 20px;
 }
 .containerLink {
@@ -42,7 +80,6 @@ body {
   justify-content: space-between;
 }
 .containerLink a {
-  color:#fff;
   text-decoration: none;
 }
 </style>
