@@ -5,7 +5,7 @@
         <div class="iconPower">
           <div class="Intelligence">
             <i class="fas fa-brain fa-lg"></i>
-            <span>Intelligence</span>
+            <label>Intelligence</label>
           </div>
         </div>
         <b-progress :value="power.intelligence === 'null' ? 0 : parseInt(power.intelligence)" :max="max" show-progress animated variant="primary"></b-progress>
@@ -14,7 +14,7 @@
         <div class="iconPower">
           <div class="Strength">
             <i class="fas fa-fist-raised fa-lg"></i>
-            <span>Strength</span>
+            <label>Strength</label>
           </div>
         </div>
         <b-progress :value="power.strength === 'null' ? 0 : parseInt(power.strength)" :max="max" show-progress animated variant="success"></b-progress>
@@ -23,7 +23,7 @@
          <div class="iconPower">
           <div class="Speed">
             <i class="fas fa-running fa-lg"></i>
-            <span>Speed</span>
+            <label>Speed</label>
           </div>
         </div>
         <b-progress :value="power.speed === 'null' ? 0 : parseInt(power.speed)" :max="max" show-progress animated variant="warning"></b-progress>
@@ -32,7 +32,7 @@
          <div class="iconPower">
           <div class="Durability">
             <i class="fas fa-shield-alt fa-lg"></i>
-            <span>Durability</span>
+            <label>Durability</label>
           </div>
         </div>
         <b-progress :value="power.durability === 'null' ? 0 : parseInt(power.durability)" :max="max" show-progress animated variant="info"></b-progress>
@@ -41,7 +41,7 @@
          <div class="iconPower">
           <div class="Power">
             <i class="fas fa-haykal fa-lg"></i>
-            <span>Power</span>
+            <label>Power</label>
           </div>
         </div>
         <b-progress :value="power.power === 'null' ? 0 :  parseInt(power.power)" :max="max" show-progress animated variant="danger"></b-progress>
@@ -50,7 +50,7 @@
          <div class="iconPower">
           <div class="Combat">
             <i class="fas fa-user-ninja fa-lg"></i>
-            <span>Combat</span>
+            <label>Combat</label>
           </div>
         </div>
         <b-progress :value="power.combat === 'null' ? 0 :  parseInt(power.combat)" :max="max" show-progress animated variant="secondary"></b-progress>
@@ -121,7 +121,7 @@ export default {
             align-items: center;
             flex-direction: column;
 
-            span {
+            label {
               margin-top: 10px;
               font-size: 10px;
             }
