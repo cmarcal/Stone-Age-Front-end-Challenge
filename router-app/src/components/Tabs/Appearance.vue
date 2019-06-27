@@ -5,7 +5,7 @@
       <li class="field">
          <div class="iconApperance">
           <div class="Durability">
-            <i class="fas fa-restroom"></i>
+            <i class="fas fa-restroom fa-lg"></i>
             <label>Gender</label>
           </div>
         </div>
@@ -14,7 +14,7 @@
        <li class="field">
          <div class="iconApperance">
           <div class="Durability">
-            <i class="fas fa-user-secret"></i>
+            <i class="fas fa-user-secret fa-lg"></i>
             <label>Race</label>
           </div>
         </div>
@@ -23,7 +23,7 @@
       <li class="field">
          <div class="iconApperance">
           <div class="Durability">
-            <i class="fas fa-arrows-alt-v"></i>
+            <i class="fas fa-arrows-alt-v fa-lg"></i>
             <label>Height</label>
           </div>
         </div>
@@ -32,7 +32,7 @@
       <li class="field">
          <div class="iconApperance">
           <div class="Durability">
-            <i class="fas fa-weight-hanging"></i>
+            <i class="fas fa-weight-hanging fa-lg"></i>
             <label>Weight</label>
           </div>
         </div>
@@ -41,7 +41,7 @@
       <li class="field">
          <div class="iconApperance">
           <div class="Durability">
-            <i class="far fa-eye"></i>
+            <i class="far fa-eye fa-lg"></i>
             <label>Eye color</label>
           </div>
         </div>
@@ -50,7 +50,7 @@
       <li class="field">
          <div class="iconApperance">
           <div class="Durability">
-            <i class="fab fa-keybase"></i>
+            <i class="fab fa-keybase fa-lg"></i>
             <label>Hair color</label>
           </div>
         </div>
@@ -104,6 +104,7 @@ export default {
             font-size: 10px;
             font-weight: bold;
             margin-bottom: 0;
+            margin-top: 10px;
           }
         }
       }
