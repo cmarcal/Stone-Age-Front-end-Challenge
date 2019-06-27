@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container">
+    <div class="containerHeader">
       <nav class="containerLink">
         <router-link :to="{ name: 'ContainerHeros'}">SuperHeros</router-link>
         <router-link :to="{ name: 'ContainerSearch'}">Find by Name</router-link>
@@ -30,7 +30,7 @@ body {
   text-align: center;
   color: #2c3e50;
 }
-.container {
+.containerHeader {
   background-color: #2a3542;
   padding: 40px 20px;
   color: #fff;

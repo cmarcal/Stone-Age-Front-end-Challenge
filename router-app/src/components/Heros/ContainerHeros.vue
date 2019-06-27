@@ -24,25 +24,24 @@ export default {
   },
   methods: {
     onHeroClick (obj) {
-      this.isModalShowing = true;
-      //this.heros.find(id => id === heros.id)
+      this.isModalShowing = true
       this.idHero = obj.id
       this.dataHero = obj
     },
     onCloseModal () {
-      this.isModalShowing = false;
+      this.isModalShowing = false
     }
   },
   created () {
     HTTP.get(process.env.TOOKEN + '/search/spider/')
       .then(response => {
-        this.isLoading = false;
+        this.isLoading = false
         this.heros = response.data
       })
       .catch(err => {
         console.log(err.message)
       })
-      return this.heros
+    return this.heros
   }
 }
 
