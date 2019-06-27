@@ -71,7 +71,7 @@ export default {
           position: absolute;
           bottom: 0;
           left: 0;
-          width: 98.5%;
+          width: 100%;
           z-index: 10;
           padding: 12px 1.6px 8px 1.6px;
           background-color: #3a3a3acc;

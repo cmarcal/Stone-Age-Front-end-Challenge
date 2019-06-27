@@ -90,11 +90,11 @@ export default {
         margin:20px 0;
         display: flex;
         width: 100%;
-        
+
         .progress {
           width: 92%;
           font-weight: bold;
-        }        
+        }
         .Intelligence {
             color: #007bff;
           }
@@ -128,7 +128,6 @@ export default {
           }
         }
       }
-      
     }
   }
 </style>

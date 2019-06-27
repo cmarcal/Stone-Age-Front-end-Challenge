@@ -80,6 +80,7 @@ export default {
       position: absolute;
       left: unset;
       right: unset;
+      overflow: auto;
 
       .fa-times {
         cursor: pointer;
