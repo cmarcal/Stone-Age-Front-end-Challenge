@@ -29,7 +29,9 @@ export default {
 
 <style lang="scss" scoped>
 .containerBox {
-  margin: 10px 50px;
+  padding: 10px 50px;
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -74,11 +76,10 @@ export default {
           width: 100%;
           z-index: 10;
           padding: 12px 1.6px 8px 1.6px;
-          background-color: #3a3a3acc;
-          color: #fff;
           text-align: center;
 
           h2{
+            font-weight: bold;
             font-size: 13px;
           }
         }

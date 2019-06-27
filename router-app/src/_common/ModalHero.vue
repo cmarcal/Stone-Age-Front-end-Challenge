@@ -74,8 +74,8 @@ export default {
     z-index: 101;
 
     .modal {
-      background: #FFFFFF;
-      box-shadow: 2px 2px 20px 1px;
+      //background: #FFFFFF;
+      //box-shadow: 2px 2px 20px 1px;
       padding: 10px;
       overflow-x: auto;
       display: flex;
@@ -122,7 +122,7 @@ export default {
         justify-content: space-between;
         list-style-type: none;
         padding: 5px 15px;
-        color: #36648B;
+        //color: #36648B;
         font-weight: 600;
 
         .formatedButton {
