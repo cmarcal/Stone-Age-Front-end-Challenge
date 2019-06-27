@@ -4,8 +4,12 @@
       <i @click="closeModal" class="fas fa-times fa-lg"></i>
       <div class="body">
         <img :src="dataHero.image.url" :title="dataHero.image.name" :alt="dataHero.image.name">
-        <h2>{{dataHero.name}}</h2>
-
+       
+        <div class="nameHero">
+          <h2>{{dataHero.name}}</h2>
+          <i @click="handlerFavorite(idHero)" :class="arrayFavorite.includes(idHero) ? 'fas fa-star fa-lg' : 'far fa-star fa-lg'" :title="arrayFavorite.includes(idHero) ? 'hero favorite' : 'clicked for favorite this hero'"></i>
+        </div>
+        
         <div class="tools">
           <ul class="rowTools">
             <li v-for="(tab, index) in tabs" :key="index" @click="setActive(index, tab.name)"  :class="[{'active': activeTab === index}, tab.class]" class="formatedButton">
@@ -29,7 +33,7 @@ import Work from '../components/Tabs/Work'
 
 export default {
   name: 'ModalHero',
-  props: ['idHero', 'dataHero'],
+  props: ['idHero', 'dataHero', 'arrayFavorite'],
   components: {Appearance, Biography, Connections, PowerStats, Work},
   data () {
     return {
@@ -45,6 +49,9 @@ export default {
     setActive (index, tabName) {
       this.activeTab = index
       this.currentTab = tabName
+    },
+    handlerFavorite (id) {
+      this.$emit('handlerFavorite', id)
     }
   },
   computed: {
@@ -96,6 +103,19 @@ export default {
         position: relative;
         overflow: hidden;
         border-radius: 50%;
+      }
+      .nameHero { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0;
+        h2 {
+          margin-bottom: 0;
+        }
+      }
+      .fa-star {
+        margin-left: 10px;
+        color: #FFB90F;
       }
 
       .rowTools {

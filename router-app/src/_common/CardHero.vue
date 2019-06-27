@@ -2,8 +2,8 @@
   <div class="containerBox">
     <div v-for="(h, index) in heros.results" :key="index" class="box">
       <div class="card">
-        <a href="javascript:void(0)" @click="heroClick(h)" :alt="'ver mais detalhes do ' + h.name">
-          <i class="fas fa-star fa-lg" title="heroi favoritado"></i>
+        <a href="javascript:void(0)" @click="heroClick(h)" :alt="'see more details for ' + h.name">
+          <i v-if="arrayFavorite.includes(h.id)" class="fas fa-star fa-lg" title="hero favorite"></i> 
           <div class="boxInformation">
             <h2>{{h.name}}</h2>
           </div>
@@ -18,7 +18,7 @@
 
 export default {
   name: 'CardHero',
-  props: ['heros'],
+  props: ['heros', 'arrayFavorite'],
   methods: {
     heroClick (obj) {
       this.$emit('heroClick', obj)
