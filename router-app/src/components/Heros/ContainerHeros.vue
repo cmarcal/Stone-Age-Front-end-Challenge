@@ -19,7 +19,7 @@ export default {
   data () {
     return {
       arrayFavorite: [],
-      heros: null,
+      heros: [],
       isModalShowing: false,
       isLoading: true,
       idHero: null,
@@ -58,10 +58,14 @@ export default {
       }
     }
 
-    HTTP.get(process.env.TOOKEN + '/search/spider/')
+    HTTP.get(process.env.TOOKEN + '/search/ba/')
       .then(response => {
+        for (var i = 0; i < response.data.results.length; i++) {
+          if (response.data.results[i].biography.alignment === 'good') {
+            this.heros.push(response.data.results[i])
+          }
+        }
         this.isLoading = false
-        this.heros = response.data
       })
       .catch(err => {
         console.log(err.message)

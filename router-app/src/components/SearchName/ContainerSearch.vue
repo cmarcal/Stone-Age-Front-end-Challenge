@@ -62,7 +62,7 @@ export default {
         .then(response => {
           this.isLoading = false
           this.isShowing = false
-          this.heros = response.data
+          this.heros = response.data.results
         })
         .catch(err => {
           console.log(err.message)
