@@ -2,10 +2,11 @@
   <div class="hello">
     <h2>Find one hero</h2>
     <div class="inputSearch">
-      <input v-model="valeuSearch" placeholder="ex.: iron man">
+      <input v-model="valeuSearch" placeholder="ex.: iron man" v-on:keyup="searchHero">
       <i class="fas fa-search"></i>
     </div>
-     <CardHero v-if="!isLoading" :arrayFavorite="arrayFavorite" :heros="heros" @heroClick="onHeroClick"/>
+    <i v-if="isLoading" class="fa fa-spinner fa-spin fa-2x"></i>
+    <CardHero v-if="!isShowing" :arrayFavorite="arrayFavorite" :heros="heros" @heroClick="onHeroClick"/>
     <ModalHero v-if="isModalShowing" :arrayFavorite="arrayFavorite"  :favorite="favorite" :idHero="idHero" :dataHero="dataHero" @closeModal="onCloseModal" @handlerFavorite="onHandlerFavorite"/>
   </div>
 </template>
@@ -27,7 +28,8 @@ export default {
       heros: null,
       valeuSearch: '',
       isModalShowing: false,
-      isLoading: true,
+      isShowing: true,
+      isLoading: false,
       idHero: null,
       dataHero: null
     }
@@ -53,13 +55,13 @@ export default {
       }
 
       VueCookies.set('favoriteHero', JSON.stringify(this.arrayFavorite))
-    }
-  },
-  computed: {
-    searchHero: function () {
+    },
+    searchHero () {
+      this.isLoading = true
       HTTP.get(process.env.TOOKEN + '/search/' + this.valeuSearch)
         .then(response => {
           this.isLoading = false
+          this.isShowing = false
           this.heros = response.data
         })
         .catch(err => {
@@ -71,6 +73,22 @@ export default {
       }
     }
   },
+  // methods: {
+  //   searchHero: function () {
+  //     HTTP.get(process.env.TOOKEN + '/search/' + this.valeuSearch)
+  //       .then(response => {
+  //         this.isLoading = false
+  //         this.heros = response.data
+  //       })
+  //       .catch(err => {
+  //         console.log(err.message)
+  //       })
+
+  //     if (this.valeuSearch !== '') {
+  //       return this.heros
+  //     }
+  //   }
+  // },
   created () {
     // get all id setting in coockie and add in variable local
     if (this.arrayFavorite.length === 0) {

@@ -57,6 +57,7 @@ export default {
         this.arrayFavorite.push(ac[i])
       }
     }
+
     HTTP.get(process.env.TOOKEN + '/search/spider/')
       .then(response => {
         this.isLoading = false

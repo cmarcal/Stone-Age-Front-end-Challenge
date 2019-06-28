@@ -17,7 +17,7 @@
 <script>
 export default {
   name: 'App',
-  data() {
+  data () {
     return {
       theme: 'dark',
       textTheme: 'Night',
@@ -45,20 +45,20 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
 html {
   height: 100%;
 }
 body {
   margin: 0;
-  font-family: avenir;
   -webkit-font-smoothing: antialiased;
   height: 100%;
 }
-button { 
+button {
   background: transparent;
   //color: white;
   padding: 5px 25px;
-  border: 0; 
+  border: 0;
   cursor: pointer;
   border-radius: 18px;
   border: 1px solid;
@@ -72,9 +72,9 @@ button:focus {outline:0;}
     color:#2a3542;
     border-color: #2a3542;
   }
-   a { 
+   a {
     color: #2a3542;
-    &:after { 
+    &:after {
         border-color: #2a3542;
       }
   }
@@ -95,9 +95,9 @@ button:focus {outline:0;}
     color:white;
     border-color: white;
   }
-    a { 
+    a {
       color: white;
-      &:after { 
+      &:after {
         border-color: white;
       }
     }
@@ -113,7 +113,7 @@ button:focus {outline:0;}
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+   font-family: 'Ubuntu', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -135,12 +135,12 @@ button:focus {outline:0;}
     &:after {
       display:block;
       content: '';
-      border-bottom: solid 1px ;  
-      transform: scaleX(0);  
+      border-bottom: solid 1px;
+      transform: scaleX(0);
       transition: transform 250ms ease-in-out;
     }
     &.fromLeft:after{
-      transform-origin: 100% 50%; 
+      transform-origin: 100% 50%;
     }
     &.fromLeft:hover:after{ transform: scaleX(1); transform-origin:   0% 50%; }
   }

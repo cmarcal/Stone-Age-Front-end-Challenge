@@ -1,7 +1,5 @@
 # Stone-Age-Front-end-Challenge
 
-## Build Setup
-
 ## Tools
 
 ``` bash
@@ -17,6 +15,7 @@
 - Axios 0.19
 
 ```
+## Build Setup
 
 ``` bash
 # first enter the folder router-app
