@@ -40,6 +40,9 @@ export default {
   .box {
     margin: 5px;
     width: 15%;
+    @media screen and (max-width: 700px){
+      width: 45%;
+    }
 
     .card {
       position: relative;
@@ -84,14 +87,7 @@ export default {
           }
         }
       }
-   }
-}
-
-  @media screen and (max-width: 440px){
-    .box{
-      width: 45%;
     }
-  }
+ }
 }
-
 </style>

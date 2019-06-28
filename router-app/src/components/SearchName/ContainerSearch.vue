@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h2>Find one hero</h2>
+    <h2>Find one hero or villain</h2>
     <div class="inputSearch">
       <input v-model="valeuSearch" placeholder="ex.: iron man" v-on:keyup="searchHero">
       <i class="fas fa-search"></i>

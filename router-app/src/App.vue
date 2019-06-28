@@ -130,6 +130,10 @@ button:focus {outline:0;}
   align-items: center;
   justify-content: flex-end;
 
+  @media screen and (max-width: 700px) {
+    padding: 10px 5px;
+  }
+
   a {
     margin-right: 20px;
     &:after {

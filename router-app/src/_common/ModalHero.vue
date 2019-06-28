@@ -86,6 +86,10 @@ export default {
       left: unset;
       right: unset;
       overflow: auto;
+      
+      @media screen and (max-width: 700px){
+        width: 100%;
+      }
 
       .fa-times {
         cursor: pointer;
@@ -124,6 +128,9 @@ export default {
         padding: 5px 15px;
         //color: #36648B;
         font-weight: 600;
+        @media screen and (max-width: 700px){
+          font-size: 11px
+        }
 
         .formatedButton {
           //box-shadow: 1px 1px 4px 0;
@@ -132,6 +139,10 @@ export default {
           padding: 16px 10px;
           width: 135px;
           cursor: pointer;
+          @media screen and (max-width: 700px){
+            margin-right: 4px;
+            padding: 7px 2px;
+          }
 
           &:hover {
             border-top: 2px solid #36648B;
