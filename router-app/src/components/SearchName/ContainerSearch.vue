@@ -7,7 +7,8 @@
       <i class="fas fa-search"></i>
     </div>
     <i v-if="isLoading" class="fa fa-spinner fa-spin fa-2x"></i>
-    <CardHero v-if="!isShowing" :arrayIDSFavorite="arrayIDSFavorite" :heros="heros" @heroClick="onHeroClick"/>
+    <ErroSearch v-if="msgErro" :wantedHero="valeuSearch"/>
+    <CardHero v-else :arrayIDSFavorite="arrayIDSFavorite" :heros="heros" @heroClick="onHeroClick"/>
     <ModalHero v-if="isModalShowing" :arrayIDSFavorite="arrayIDSFavorite"  :favorite="favorite" :idHero="idHero" :dataHero="dataHero" @closeModal="onCloseModal" @handlerFavorite="onHandlerFavorite"/>
   </div>
 </template>
@@ -19,23 +20,24 @@ import {HTTP} from '@/Api/api'
 import CardHero from '../../_common/CardHero'
 import ModalHero from '../../_common/ModalHero'
 import Banner from '../../_common/Banner'
+import ErroSearch from '../Error/ErrorSearch'
 Vue.use(VueCookies)
 
 export default {
   name: 'ContainerSearch',
-  components: {CardHero, ModalHero, Banner},
+  components: {CardHero, ModalHero, Banner, ErroSearch},
   data () {
     return {
       title: 'Welcome to the search page',
       showDescription: true,
       arrayIDSFavorite: [],
       heros: null,
-      valeuSearch: '',
+      valeuSearch: null,
       isModalShowing: false,
-      isShowing: true,
       isLoading: false,
       idHero: null,
-      dataHero: null
+      dataHero: null,
+      msgErro: false
     }
   },
   methods: {
@@ -62,18 +64,23 @@ export default {
     },
     searchHero () {
       this.isLoading = true
-      HTTP.get(process.env.TOOKEN + '/search/' + this.valeuSearch)
-        .then(response => {
-          this.isLoading = false
-          this.isShowing = false
-          this.heros = response.data.results
-        })
-        .catch(err => {
-          console.log(err.message)
-        })
-
       if (this.valeuSearch !== '') {
-        return this.heros
+        HTTP.get(process.env.TOOKEN + '/search/' + this.valeuSearch)
+          .then(response => {
+            this.isLoading = false
+            if (response.data.response === 'error') {
+              this.msgErro = true
+            } else {
+              this.msgErro = false
+              this.heros = response.data.results
+            }
+          })
+          .catch(err => {
+            console.log(err.message)
+          })
+      } else {
+        this.msgErro = false
+        this.isLoading = false
       }
     }
   },
@@ -100,10 +107,14 @@ export default {
   margin-top: 15px;
   input {
     margin: 20px 0;
-    width: 30%;
-    height: 45px;;
+    width: 32%;
+    margin-left: 21px;
+    height: 45px;
     border: none;
     border-radius: 5px;
+    @media screen and(max-width: 700px){
+      width: 90%;
+    }
 
     &::placeholder {
       padding: 10px;

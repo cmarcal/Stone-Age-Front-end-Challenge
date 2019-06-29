@@ -141,9 +141,9 @@ button {
   justify-content: space-between;
   border-bottom: 1px solid;
 
-    @media screen and (max-width: 700px) {
-      padding: 10px 5px;
-    }
+  @media screen and (max-width: 700px) {
+    padding: 10px 5px;
+  }
 
   .navLinks {
     display: flex;
@@ -175,6 +175,9 @@ button {
       transform-origin: 100% 50%;
     }
     &.fromLeft:hover:after{ transform: scaleX(1); transform-origin:   0% 50%; }
+    @media screen and (max-width: 700px) {
+      font-size: 13px;
+    }
   }
 }
 .containerLink a {
