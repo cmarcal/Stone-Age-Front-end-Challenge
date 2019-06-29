@@ -1,13 +1,14 @@
 <template>
   <div class="search">
+    <Banner :title="title" :showDescription="showDescription" />
     <h2><span>Find one hero or villain</span></h2>
     <div class="inputSearch">
       <input v-model="valeuSearch" placeholder="ex.: iron man" v-on:keyup="searchHero">
       <i class="fas fa-search"></i>
     </div>
     <i v-if="isLoading" class="fa fa-spinner fa-spin fa-2x"></i>
-    <CardHero v-if="!isShowing" :arrayFavorite="arrayFavorite" :heros="heros" @heroClick="onHeroClick"/>
-    <ModalHero v-if="isModalShowing" :arrayFavorite="arrayFavorite"  :favorite="favorite" :idHero="idHero" :dataHero="dataHero" @closeModal="onCloseModal" @handlerFavorite="onHandlerFavorite"/>
+    <CardHero v-if="!isShowing" :arrayIDSFavorite="arrayIDSFavorite" :heros="heros" @heroClick="onHeroClick"/>
+    <ModalHero v-if="isModalShowing" :arrayIDSFavorite="arrayIDSFavorite"  :favorite="favorite" :idHero="idHero" :dataHero="dataHero" @closeModal="onCloseModal" @handlerFavorite="onHandlerFavorite"/>
   </div>
 </template>
 
@@ -17,14 +18,17 @@ import VueCookies from 'vue-cookies'
 import {HTTP} from '@/Api/api'
 import CardHero from '../../_common/CardHero'
 import ModalHero from '../../_common/ModalHero'
+import Banner from '../../_common/Banner'
 Vue.use(VueCookies)
 
 export default {
   name: 'ContainerSearch',
-  components: {CardHero, ModalHero},
+  components: {CardHero, ModalHero, Banner},
   data () {
     return {
-      arrayFavorite: [],
+      title: 'Welcome to the search page',
+      showDescription: true,
+      arrayIDSFavorite: [],
       heros: null,
       valeuSearch: '',
       isModalShowing: false,
@@ -47,14 +51,14 @@ export default {
       // verify if hero exist in array
       // if exist, remove from array
       // else add in array
-      if (this.arrayFavorite.includes(id)) {
-        let index = this.arrayFavorite.indexOf(id)
-        this.arrayFavorite.splice(index, 1)
+      if (this.arrayIDSFavorite.includes(id)) {
+        let index = this.arrayIDSFavorite.indexOf(id)
+        this.arrayIDSFavorite.splice(index, 1)
       } else {
-        this.arrayFavorite.push(id)
+        this.arrayIDSFavorite.push(id)
       }
 
-      VueCookies.set('favoriteHero', JSON.stringify(this.arrayFavorite))
+      VueCookies.set('favoriteHero', JSON.stringify(this.arrayIDSFavorite))
     },
     searchHero () {
       this.isLoading = true
@@ -75,10 +79,10 @@ export default {
   },
   created () {
     // get all id setting in coockie and add in variable local
-    if (this.arrayFavorite.length === 0) {
+    if (this.arrayIDSFavorite.length === 0) {
       let ac = JSON.parse(VueCookies.get('favoriteHero'))
       for (var i = 0; i < ac.length; i++) {
-        this.arrayFavorite.push(ac[i])
+        this.arrayIDSFavorite.push(ac[i])
       }
     }
   }
@@ -88,7 +92,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 .search {
-  margin-top:20px;
    span {
     border-bottom: 2px solid #F7921C;
   }

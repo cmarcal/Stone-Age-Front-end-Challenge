@@ -5,23 +5,12 @@
         <img src="./assets/logo.png">
       </div>
       <div class="navLinks">
-        <router-link :to="{ name: 'ContainerHeros'}" class="fromLeft">All Super Heros</router-link>
-        <router-link :to="{ name: 'ContainerSearch'}" class="fromLeft">Find by Name</router-link>
+        <router-link :to="{ name: 'ContainerHeros'}" class="fromLeft">All super heros</router-link>
+        <router-link :to="{ name: 'ContainerSearch'}" class="fromLeft">Find by name</router-link>
+        <router-link :to="{ name: 'ContainerFavorite'}" class="fromLeft">List favorite</router-link>
         <button @click="triggy">{{textTheme}} <i class="fas " :class="iconTheme"></i></button>
       </div>
     </nav>
-    <div class="containerHeader" >
-      <h1>Welcome to the list of all heros</h1>
-      <p>
-        Heroes and villains take over the imaginary of people and win the hearts of many people. Is not it?
-        </p>
-        <p>
-        Now, you can choose A super power, what would it be?
-        </p>
-        <p>
-        Comics stuff has launched a collection with the particularities of the main comic and movie characters that will help you in this great decision.
-      </p>
-    </div>
     <transition name="moveInUp">
       <router-view/>
     </transition>
@@ -145,29 +134,6 @@ button {
   height: 100%;
 }
 
-.containerHeader {
-  padding: 40px 20px;
-
-  h1 {
-    margin-bottom: 30px;
-    font-family: 'Patrick Hand', cursive;
-    letter-spacing: 1px;
-    font-size: 45px;
-    text-transform: uppercase;
-    @media screen and (max-width:700px){
-      font-size:38px;
-    }
-  }
-  p {
-    font-size: 18px;
-    @media screen and (max-width:700px){
-      font-size:15px;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
 .containerLink {
   padding: 10px 50px;
   display: flex;
