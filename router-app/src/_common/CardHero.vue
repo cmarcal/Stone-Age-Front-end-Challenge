@@ -5,7 +5,8 @@
         <a href="javascript:void(0)" @click="heroClick(h)" :alt="'see more details for ' + h.name">
           <i v-if="arrayFavorite.includes(h.id)" class="fas fa-star fa-lg" title="hero favorite"></i>
           <div class="boxInformation">
-            <h2>{{h.name}}</h2>
+            <h2>{{h.name}} </h2>
+            <p>[+] informations</p>
           </div>
           <img :src="h.image.url" :title="h.image.name" :alt="h.image.name">
         </a>
@@ -35,7 +36,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 
   .box {
     margin: 5px;
@@ -57,6 +58,7 @@ export default {
         width: 100%;
         height: 100%;
         z-index: 100;
+        overflow: hidden;
 
         .fa-star {
           color: #FFB90F;
@@ -70,6 +72,11 @@ export default {
           height: 100%;
           position: relative;
           z-index: -1;
+          transition: transform .2s;
+
+          &:hover {
+            transform: scale(1.3);
+          }
         }
 
         .boxInformation {
@@ -78,12 +85,19 @@ export default {
           left: 0;
           width: 100%;
           z-index: 10;
-          padding: 12px 1.6px 8px 1.6px;
+          padding: 8px 1.6px 8px 1.6px;
           text-align: center;
 
           h2{
-            font-weight: bold;
+            font-weight: 900;
             font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+          }
+          p{
+            margin-bottom: 0;
+            font-size: 13px;
+            font-weight: 700
           }
         }
       }

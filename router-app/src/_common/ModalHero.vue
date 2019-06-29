@@ -6,7 +6,10 @@
         <img :src="dataHero.image.url" :title="dataHero.image.name" :alt="dataHero.image.name">
         <div class="nameHero">
           <h2>{{dataHero.name}}</h2>
-          <i @click="handlerFavorite(idHero)" :class="arrayFavorite.includes(idHero) ? 'fas fa-star fa-lg' : 'far fa-star fa-lg'" :title="arrayFavorite.includes(idHero) ? 'hero favorite' : 'clicked for favorite this hero'"></i>
+          <span @click="handlerFavorite(idHero)" class="boxFavorite">
+            <i :class="arrayFavorite.includes(idHero) ? 'fas fa-star fa-lg' : 'far fa-star fa-lg'" :title="arrayFavorite.includes(idHero) ? 'hero favorite' : 'clicked for favorite this hero'"></i>
+            {{arrayFavorite.includes(idHero) ? 'Desfavorite' : 'Favorite'}}
+          </span>
         </div>
         <div class="tools">
           <ul class="rowTools">
@@ -81,7 +84,8 @@ export default {
       display: flex;
       flex-direction: column;
       width: 50%;
-      border-radius: 8px;
+      height: 95%;
+      margin-top: 1.5%;
       position: absolute;
       left: unset;
       right: unset;
@@ -89,6 +93,9 @@ export default {
 
       @media screen and (max-width: 700px){
         width: 100%;
+        width: 100%;
+        height: 100vh;
+        margin-top: 0;
       }
 
       .fa-times {
@@ -100,8 +107,9 @@ export default {
       }
 
       img {
-        width: 230px;
-        height: 230px;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
         position: relative;
         overflow: hidden;
         border-radius: 50%;
@@ -111,12 +119,25 @@ export default {
         align-items: center;
         justify-content: center;
         margin: 10px 0;
+
+        .boxFavorite {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          border: 1px solid #FFB90F;
+          padding: 5px 10px;
+          border-radius: 8px;
+          margin-left: 15px;
+          text-transform: uppercase;
+          cursor: pointer;
+        }
         h2 {
           margin-bottom: 0;
+          text-transform: uppercase;
         }
       }
       .fa-star {
-        margin-left: 10px;
+        margin-right: 10px;
         color: #FFB90F;
       }
 

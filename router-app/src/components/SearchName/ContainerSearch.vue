@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h2>Find one hero or villain</h2>
+  <div class="search">
+    <h2><span>Find one hero or villain</span></h2>
     <div class="inputSearch">
       <input v-model="valeuSearch" placeholder="ex.: iron man" v-on:keyup="searchHero">
       <i class="fas fa-search"></i>
@@ -73,22 +73,6 @@ export default {
       }
     }
   },
-  // methods: {
-  //   searchHero: function () {
-  //     HTTP.get(process.env.TOOKEN + '/search/' + this.valeuSearch)
-  //       .then(response => {
-  //         this.isLoading = false
-  //         this.heros = response.data
-  //       })
-  //       .catch(err => {
-  //         console.log(err.message)
-  //       })
-
-  //     if (this.valeuSearch !== '') {
-  //       return this.heros
-  //     }
-  //   }
-  // },
   created () {
     // get all id setting in coockie and add in variable local
     if (this.arrayFavorite.length === 0) {
@@ -103,19 +87,23 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-
-h1, h2 {
-  font-weight: normal;
+.search {
+  margin-top:20px;
+   span {
+    border-bottom: 2px solid #F7921C;
+  }
 }
 .inputSearch {
+  margin-top: 15px;
   input {
     margin: 20px 0;
-    width: 40%;
+    width: 30%;
+    height: 45px;;
     border: none;
-    border-bottom: 2px solid #2a3542;
+    border-radius: 5px;
 
     &::placeholder {
-      padding: 5px;
+      padding: 10px;
     }
     &:focus{
     outline: none;

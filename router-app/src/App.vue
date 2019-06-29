@@ -1,12 +1,26 @@
 <template>
   <div id="app" :class="theme">
-    <div class="containerHeader" >
-      <nav class="containerLink">
+    <nav class="containerLink">
+      <div class="navLinks">
+        <img src="./assets/logo.png">
+      </div>
+      <div class="navLinks">
         <router-link :to="{ name: 'ContainerHeros'}" class="fromLeft">All Super Heros</router-link>
         <router-link :to="{ name: 'ContainerSearch'}" class="fromLeft">Find by Name</router-link>
         <button @click="triggy">{{textTheme}} <i class="fas " :class="iconTheme"></i></button>
-      </nav>
+      </div>
+    </nav>
+    <div class="containerHeader" >
       <h1>Welcome to the list of all heros</h1>
+      <p>
+        Heroes and villains take over the imaginary of people and win the hearts of many people. Is not it?
+        </p>
+        <p>
+        Now, you can choose A super power, what would it be?
+        </p>
+        <p>
+        Comics stuff has launched a collection with the particularities of the main comic and movie characters that will help you in this great decision.
+      </p>
     </div>
     <transition name="moveInUp">
       <router-view/>
@@ -19,9 +33,9 @@ export default {
   name: 'App',
   data () {
     return {
-      theme: 'dark',
-      textTheme: 'Night',
-      iconTheme: 'fa-moon'
+      theme: 'light',
+      textTheme: 'Day',
+      iconTheme: 'fa-sun'
     }
   },
   methods: {
@@ -46,6 +60,7 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Patrick+Hand&display=swap');
 html {
   height: 100%;
 }
@@ -62,8 +77,18 @@ button {
   cursor: pointer;
   border-radius: 18px;
   border: 1px solid;
+    @media screen and (max-width:700px){
+      padding: 5px 0px;
+      width: 94px;
+    }
+    &:focus {
+      outline:0;
+    }
+
+    .fas {
+      margin-left: 10px;
+    }
 }
-button:focus {outline:0;}
 
 .light {
   background: #eee;
@@ -82,7 +107,7 @@ button:focus {outline:0;}
     background-color: #eee;
   }
   .boxInformation {
-    background-color: #d4d4d4cc;
+    background-color: #d4d4d4e8;
   }
   .modal {
     background-color: #fff
@@ -119,23 +144,60 @@ button:focus {outline:0;}
   text-align: center;
   height: 100%;
 }
+
 .containerHeader {
   padding: 40px 20px;
-  margin-bottom: 30px;
+
+  h1 {
+    margin-bottom: 30px;
+    font-family: 'Patrick Hand', cursive;
+    letter-spacing: 1px;
+    font-size: 45px;
+    text-transform: uppercase;
+    @media screen and (max-width:700px){
+      font-size:38px;
+    }
+  }
+  p {
+    font-size: 18px;
+    @media screen and (max-width:700px){
+      font-size:15px;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 .containerLink {
-  padding: 10px 30px;
-  margin-bottom: 25px;
+  padding: 10px 50px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid;
 
-  @media screen and (max-width: 700px) {
-    padding: 10px 5px;
+    @media screen and (max-width: 700px) {
+      padding: 10px 5px;
+    }
+
+  .navLinks {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    img{
+      width: 170px;
+      height: 90px;
+      margin-right: 30px;
+      @media screen and (max-width:700px){
+        width: 80px;
+        height: 56px;
+        margin-right: 10px;
+      }
+    }
   }
 
   a {
     margin-right: 20px;
+    font-size: 18px;
     &:after {
       display:block;
       content: '';
