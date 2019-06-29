@@ -45,15 +45,14 @@ export default {
       if (this.arrayIDSFavorite.includes(id)) {
         let index = this.arrayIDSFavorite.indexOf(id)
         this.arrayIDSFavorite.splice(index, 1)
-        this.arrayFavorite.splice(index, 1)
+
+        let idxArrayShow = this.arrayFavorite.findIndex(x => x.id === id)
+        this.arrayFavorite.splice(idxArrayShow, 1)
       } else {
         this.arrayIDSFavorite.push(id)
       }
       VueCookies.set('favoriteHero', JSON.stringify(this.arrayIDSFavorite))
     }
-  },
-  mounted: {
-
   },
   created () {
     // get all id setting in coockie and add in variable local
