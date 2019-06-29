@@ -7,8 +7,8 @@
         <div class="nameHero">
           <h2>{{dataHero.name}}</h2>
           <span @click="handlerFavorite(idHero)" class="boxFavorite">
-            <i :class="arrayFavorite.includes(idHero) ? 'fas fa-star fa-lg' : 'far fa-star fa-lg'" :title="arrayFavorite.includes(idHero) ? 'hero favorite' : 'clicked for favorite this hero'"></i>
-            {{arrayFavorite.includes(idHero) ? 'Desfavorite' : 'Favorite'}}
+            <i :class="arrayIDSFavorite.includes(idHero) ? 'fas fa-star fa-lg' : 'far fa-star fa-lg'" :title="arrayIDSFavorite.includes(idHero) ? 'hero favorite' : 'clicked for favorite this hero'"></i>
+            {{arrayIDSFavorite.includes(idHero) ? 'Desfavorite' : 'Favorite'}}
           </span>
         </div>
         <div class="tools">
@@ -34,7 +34,7 @@ import Work from '../components/Tabs/Work'
 
 export default {
   name: 'ModalHero',
-  props: ['idHero', 'dataHero', 'arrayFavorite'],
+  props: ['idHero', 'dataHero', 'arrayIDSFavorite'],
   components: {Appearance, Biography, Connections, PowerStats, Work},
   data () {
     return {
