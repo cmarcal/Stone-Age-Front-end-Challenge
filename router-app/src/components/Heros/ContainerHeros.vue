@@ -53,8 +53,10 @@ export default {
     // get all id setting in coockie and add in variable local
     if (this.arrayFavorite.length === 0) {
       let ac = JSON.parse(VueCookies.get('favoriteHero'))
-      for (var i = 0; i < ac.length; i++) {
-        this.arrayFavorite.push(ac[i])
+      if (ac !== null) {
+        for (var i = 0; i < ac.length; i++) {
+          this.arrayFavorite.push(ac[i])
+        }
       }
     }
 

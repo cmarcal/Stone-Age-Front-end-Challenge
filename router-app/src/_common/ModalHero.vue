@@ -86,7 +86,7 @@ export default {
       left: unset;
       right: unset;
       overflow: auto;
-      
+
       @media screen and (max-width: 700px){
         width: 100%;
       }
